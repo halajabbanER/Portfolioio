@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "To-Do List",
+    "category": "web",
+    "description": "A responsive task management application with Dark/Light mode, multilingual support, LocalStorage, filtering, and progress tracking.",
+    "image": "assets/images/todo.png",
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "githubLink": "https://github.com/halajabbanER/To-Do-Listiio",
+    "demoLink": "https://halajabbaner.github.io/To-Do-Listiio/"
+  },
+  {
+    "id": 2,
+    "title": "AI Marketing Platform",
+    "category": "web",
+    "description": "A modern landing page for an AI-powered marketing platform with responsive design and interactive UI.",
+    "image": "assets/images/marketing.png",
+    "tags": ["HTML", "CSS", "Bootstrap"],
+    "githubLink": "https://github.com/halajabbanER",
+    "demoLink": "#"
+  },
+  {
+    "id": 3,
+    "title": "Student Grade Calculator",
+    "category": "web",
+    "description": "A JavaScript application that calculates students' grades based on their scores.",
+    "image": "assets/images/grade.png",
+    "tags": ["JavaScript"],
+    "githubLink": "https://github.com/halajabbanER",
+    "demoLink": "#"
+  },
+  {
+    "id": 4,
+    "title": "Personal Portfolio",
+    "category": "web",
+    "description": "A responsive portfolio website built with Bootstrap, JavaScript, JSON, Dark Mode, and dynamic project filtering.",
+    "image": "assets/images/portfolio.png",
+    "tags": ["Bootstrap", "JavaScript", "JSON"],
+    "githubLink": "https://github.com/halajabbanER",
+    "demoLink": "#"
+  }
+]
