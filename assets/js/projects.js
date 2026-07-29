@@ -42,7 +42,6 @@ function createProjectImage(project) {
 
   return media;
 }
-
 function createProjectCard(project) {
   const column = document.createElement("div");
   const card = document.createElement("article");
@@ -57,6 +56,7 @@ function createProjectCard(project) {
   content.className = "project-card-content";
   tags.className = "project-tags";
   buttons.className = "project-buttons";
+
   title.textContent = project.title;
   description.textContent = project.description;
 
@@ -68,21 +68,40 @@ function createProjectCard(project) {
     }),
   );
 
+  // Details button
   const detailsLink = document.createElement("a");
+  const detailsIcon = document.createElement("i");
+
   detailsLink.href = `project-details.html?id=${project.id}`;
   detailsLink.className = "project-btn details-btn";
-  detailsLink.textContent = "Details";
+  detailsLink.setAttribute("aria-label", `View details for ${project.title}`);
+
+  detailsIcon.className = "bi bi-eye";
+  detailsIcon.setAttribute("aria-hidden", "true");
+
+  detailsLink.append(detailsIcon, document.createTextNode("Details"));
 
   const links = [
     createLink(project.githubLink, "github-btn", "bi-github", "GitHub"),
-    createLink(project.demoLink, "demo-btn", "bi-box-arrow-up-right", "Live Demo"),
+
+    createLink(
+      project.demoLink,
+      "demo-btn",
+      "bi-box-arrow-up-right",
+      "Live Demo",
+    ),
+
     detailsLink,
   ].filter(Boolean);
 
   buttons.append(...links);
+
   content.append(tags, title, description, buttons);
+
   card.append(createProjectImage(project), content);
+
   column.append(card);
+
   return column;
 }
 
@@ -129,3 +148,4 @@ filterButtons.forEach((button) => {
 });
 
 if (projectsContainer && searchInput && noProjectsMessage) loadProjects();
+document.documentElement.setAttribute("data-theme", "dark");

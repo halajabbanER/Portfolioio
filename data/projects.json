@@ -4,39 +4,66 @@
     "title": "To-Do List",
     "category": "web",
     "description": "A responsive task management application with Dark/Light mode, multilingual support, LocalStorage, filtering, and progress tracking.",
-    "image": "assets/images/todo.png",
-    "tags": ["HTML", "CSS", "JavaScript"],
+    "overview": "This project was created to help users organize and manage their daily tasks through a simple, responsive, and user-friendly interface.",
+    "image": "assets/images/to-do-list.png",
+    "tags": ["HTML", "CSS", "JavaScript", "mobile"],
+    "technologies": ["HTML5", "CSS3", "JavaScript", "LocalStorage","mobile"],
+    "features": [
+      "Add and delete tasks",
+      "Complete and filter tasks",
+      "Dark and Light mode",
+      "Arabic, English and Turkish language support",
+      "LocalStorage data saving",
+      "Task statistics and progress tracking",
+      "Responsive design"
+    ],
     "githubLink": "https://github.com/halajabbanER/To-Do-Listiio",
     "demoLink": "https://halajabbaner.github.io/To-Do-Listiio/"
   },
   {
     "id": 2,
-    "title": "AI Marketing Platform",
+    "title": "Portfolio",
     "category": "web",
-    "description": "A modern landing page for an AI-powered marketing platform with responsive design and interactive UI.",
-    "image": "assets/images/marketing.png",
-    "tags": ["HTML", "CSS", "Bootstrap"],
-    "githubLink": "https://github.com/halajabbanER",
+    "description": "A showcase of projects I have designed and developed, from responsive websites to user interface designs.",
+    "overview": "This personal portfolio presents my skills, experience, and software projects through a modern and responsive interface.",
+    "image": "assets/images/portfolio.png",
+    "tags": ["HTML", "CSS", "JavaScript"],
+    "technologies": ["HTML5", "CSS3", "Bootstrap", "JavaScript", "JSON"],
+    "features": [
+      "Responsive design",
+      "Dynamic project cards",
+      "Project search",
+      "Category filtering",
+      "Project details page",
+      "Dark and Light mode"
+    ],
+    "githubLink": "https://github.com/halajabbanER/Portfolio",
     "demoLink": "#"
   },
   {
     "id": 3,
-    "title": "Student Grade Calculator",
-    "category": "web",
-    "description": "A JavaScript application that calculates students' grades based on their scores.",
-    "image": "assets/images/grade.png",
-    "tags": ["JavaScript"],
-    "githubLink": "https://github.com/halajabbanER",
-    "demoLink": "#"
-  },
-  {
-    "id": 4,
-    "title": "Personal Portfolio",
-    "category": "web",
-    "description": "A responsive portfolio website built with Bootstrap, JavaScript, JSON, Dark Mode, and dynamic project filtering.",
-    "image": "assets/images/portfolio.png",
-    "tags": ["Bootstrap", "JavaScript", "JSON"],
-    "githubLink": "https://github.com/halajabbanER",
+    "title": "LogisticsNotes.API",
+    "category": "backend",
+    "description": "A backend API developed with ASP.NET Core and C# to manage logistics records. The project includes RESTful endpoints, database integration, and CRUD operations.",
+    "overview": "This API manages logistics notes and records using a structured backend architecture and RESTful services.",
+    "image": "assets/images/letter.png",
+    "tags": ["ASP.NET Core", "C#", "SQL Server"],
+    "technologies": [
+      "ASP.NET Core",
+      "C#",
+      "Entity Framework Core",
+      "SQL Server",
+      "REST API"
+    ],
+    "features": [
+      "Create logistics records",
+      "Display all records",
+      "Update existing records",
+      "Delete records",
+      "Database integration",
+      "RESTful endpoints"
+    ],
+    "githubLink": "#",
     "demoLink": "#"
   }
 ]
