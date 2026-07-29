@@ -1,5 +1,6 @@
 const themeToggle = document.getElementById("themeToggle");
-const themeIcon = document.getElementById("themeIcon");
+const themeIcon =
+  document.getElementById("themeIcon") || themeToggle?.querySelector("i");
 const savedTheme = localStorage.getItem("portfolioTheme");
 
 function applyTheme(theme) {

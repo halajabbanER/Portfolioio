@@ -148,4 +148,3 @@ filterButtons.forEach((button) => {
 });
 
 if (projectsContainer && searchInput && noProjectsMessage) loadProjects();
-document.documentElement.setAttribute("data-theme", "dark");

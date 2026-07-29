@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
 
+    <script src="assets/js/main.js" defer></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta name="description" content="Personal Portfolio - Projects" />
@@ -22,7 +24,9 @@
     />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/light-theme.css" />
+    <link rel="stylesheet" href="assets/css/dark-theme.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
   </head>
 
   <body>
@@ -33,13 +37,9 @@
         <div class="container">
           <!-- Logo -->
 
-         <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+         <a class="navbar-brand" href="index.html">
   <span class="logo-box">HJ</span>
-
-  <div class="logo-text">
-    <span class="logo-name">Hala Jabban</span>
-    <small class="logo-role">Frontend Developer</small>
-  </div>
+  <span class="logo-name">Hala Jabban</span>
 </a>
 
           <!-- Mobile -->
@@ -67,7 +67,7 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link active" href="projects.html"> Projects </a>
+                <a class="nav-link" href="projects.html"> Projects </a>
               </li>
 
               <li class="nav-item">
@@ -86,64 +86,71 @@
     </header>
 
     <!-- ================= Hero ================= -->
-<main>
-  <section class="projects-hero">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-xl-8 text-center">
+    <main>
+      <section class="projects-hero">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-8 text-center">
+              <h1 class="projects-title">
+                I am <span></span>
+                <br />
+                <span>Hala Jabban</span>
+              </h1>
 
-       
-
-
-          <h1 class="projects-title">
-            I am <span></span>
-            <br>
-          <span>Hala Jabban</span>
-          </h1>
-
-          <p class="projects-description">
-       I’m a Computer Engineer and Frontend Developer passionate about designing and developing modern,
-        responsive,and accessible web applications.I believe that great user experiences begin with thoughtful design and maintainable code.
-          </p>
-
+              <p class="projects-description">
+                Hi  I'm a Computer Engineer and Frontend Developer passionate about
+                designing and developing modern, responsive,and accessible web
+                applications.I believe that great user experiences begin with
+                thoughtful design and maintainable code.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
+      <div class="hero-buttons">
+        <a href="projects.html" class="hero-btn primary-btn">
+          <i class="bi bi-grid-fill"></i>
+          View Projects
+        </a>
+
+        <a
+          href="assets/files/Hala-Jabban-CV.pdf"
+          class="hero-btn secondary-btn"
+          download
+        >
+          <i class="bi bi-download"></i>
+          Download CV
+        </a>
       </div>
-    </div>
-  </section>
-</main>
-<section class="projects-section">
-  <div class="container">
+    </main>
+    <section class="projects-section">
+      <div class="container">
+        <div class="projects-toolbar">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
 
-    <div class="projects-toolbar">
+            <input
+              type="text"
+              id="projectSearch"
+              placeholder="Search projects by name..."
+            />
+          </div>
 
-      <div class="search-box">
-        <i class="bi bi-search"></i>
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="uiux">UI/UX</button>
+          </div>
+        </div>
 
-        <input
-          type="text"
-          id="projectSearch"
-          placeholder="Search projects by name..."
-        />
+        <div class="row g-4" id="projectsContainer"></div>
+
+        <p class="no-projects-message" id="noProjectsMessage">
+          No projects found.
+        </p>
       </div>
-
-      <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="web">Web</button>
-        <button class="filter-btn" data-filter="mobile">Mobile</button>
-        <button class="filter-btn" data-filter="uiux">UI/UX</button>
-      </div>
-
-    </div>
-
-    <div class="row g-4" id="projectsContainer"></div>
-
-    <p class="no-projects-message" id="noProjectsMessage">
-      No projects found.
-    </p>
-
-  </div>
-</section>
-
+    </section>
 
     <footer class="footer">
       <div class="container">
@@ -154,9 +161,7 @@
       </div>
     </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/projects.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/projects.js"></script>
   </body>
 </html>

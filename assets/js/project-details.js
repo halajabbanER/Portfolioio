@@ -164,5 +164,4 @@ function displayProjectDetails(project) {
     </article>
   `;
 }
-document.documentElement.setAttribute("data-theme", "dark");
 loadProjectDetails();
