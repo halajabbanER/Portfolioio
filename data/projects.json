@@ -2,6 +2,7 @@
   {
     "id": 1,
     "title": "To-Do List",
+    "featured": true,
     "category": "web",
     "description": "A responsive task management application with Dark/Light mode, multilingual support, LocalStorage, filtering, and progress tracking.",
     "overview": "This project was created to help users organize and manage their daily tasks through a simple, responsive, and user-friendly interface.",
@@ -43,6 +44,7 @@
   {
     "id": 3,
     "title": "LogisticsNotes.API",
+    "featured": true,
     "category": "backend",
     "description": "A backend API developed with ASP.NET Core and C# to manage logistics records. The project includes RESTful endpoints, database integration, and CRUD operations.",
     "overview": "This API manages logistics notes and records using a structured backend architecture and RESTful services.",
@@ -69,6 +71,7 @@
   {
     "id": 4,
     "title": "16-Bit Processor Design and Sequencing Algorithm",
+    "featured": true,
     "category": "Hardware",
     "description": "A 16-bit processor designed using Logisim to demonstrate the fundamentals of computer architecture, instruction execution, and digital logic design.",
     "overview": "This project focuses on designing and simulating a 16-bit processor in Logisim. It includes the implementation of core processor components, instruction execution, and sequencing logic to demonstrate how a CPU operates at the hardware level.",

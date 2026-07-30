@@ -148,3 +148,15 @@ filterButtons.forEach((button) => {
 });
 
 if (projectsContainer && searchInput && noProjectsMessage) loadProjects();
+fetch("assets/data/projects.json")
+  .then((response) => response.json())
+  .then((projects) => {
+    const featuredProjects = projects
+      .filter((project) => project.featured === true)
+      .slice(0, 3);
+
+    displayProjects(featuredProjects);
+  })
+  .catch((error) => {
+    console.error("Error loading projects:", error);
+  });
