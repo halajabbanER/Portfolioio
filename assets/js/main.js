@@ -1,4 +1,3 @@
-
 applyTheme(savedTheme === "dark" ? "dark" : "light");
 
 themeToggle?.addEventListener("click", () => {
@@ -8,14 +7,15 @@ themeToggle?.addEventListener("click", () => {
   applyTheme(nextTheme);
   localStorage.setItem("portfolioTheme", nextTheme);
 });
+
 const languageBtn = document.getElementById("languageBtn");
 const languageMenu = document.getElementById("languageMenu");
 
-languageBtn.addEventListener("click", function (event) {
+languageBtn?.addEventListener("click", function (event) {
   event.stopPropagation();
-  languageMenu.classList.toggle("show");
+  languageMenu?.classList.toggle("show");
 });
 
 document.addEventListener("click", function () {
-  languageMenu.classList.remove("show");
+  languageMenu?.classList.remove("show");
 });

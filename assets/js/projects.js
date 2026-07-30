@@ -1,3 +1,16 @@
+/* ============================================================
+   Projects Loader — Homepage vs. Projects Page
+   ============================================================ */
+
+/* ---- Config: how many projects to show on the homepage ---- */
+const HOME_PROJECTS_LIMIT = 3;
+
+/* ---- Detect page context ---- */
+const isHomePage =
+  window.location.pathname.includes("index.html") ||
+  window.location.pathname === "/" ||
+  window.location.pathname.endsWith("/");
+
 const projectsContainer = document.getElementById("projectsContainer");
 const searchInput = document.getElementById("projectSearch");
 const filterButtons = document.querySelectorAll(".filter-btn");
@@ -5,6 +18,10 @@ const noProjectsMessage = document.getElementById("noProjectsMessage");
 
 let projects = [];
 let selectedCategory = "all";
+
+/* ============================================================
+   Helpers
+   ============================================================ */
 
 function createLink(href, className, iconName, label) {
   if (!href || href === "#") return null;
@@ -39,9 +56,9 @@ function createProjectImage(project) {
     image.addEventListener("error", () => image.remove());
     media.prepend(image);
   }
-
   return media;
 }
+
 function createProjectCard(project) {
   const column = document.createElement("div");
   const card = document.createElement("article");
@@ -68,95 +85,104 @@ function createProjectCard(project) {
     }),
   );
 
-  // Details button
+  /* Details button */
   const detailsLink = document.createElement("a");
   const detailsIcon = document.createElement("i");
-
   detailsLink.href = `project-details.html?id=${project.id}`;
   detailsLink.className = "project-btn details-btn";
   detailsLink.setAttribute("aria-label", `View details for ${project.title}`);
-
   detailsIcon.className = "bi bi-eye";
   detailsIcon.setAttribute("aria-hidden", "true");
-
   detailsLink.append(detailsIcon, document.createTextNode("Details"));
 
   const links = [
     createLink(project.githubLink, "github-btn", "bi-github", "GitHub"),
-
     createLink(
       project.demoLink,
       "demo-btn",
       "bi-box-arrow-up-right",
       "Live Demo",
     ),
-
     detailsLink,
   ].filter(Boolean);
 
   buttons.append(...links);
-
   content.append(tags, title, description, buttons);
-
   card.append(createProjectImage(project), content);
-
   column.append(card);
-
   return column;
 }
 
 function displayProjects(projectList) {
+  if (!projectsContainer) return;
   projectsContainer.replaceChildren(...projectList.map(createProjectCard));
-  noProjectsMessage.style.display = projectList.length ? "none" : "block";
+  if (noProjectsMessage) {
+    noProjectsMessage.style.display = projectList.length ? "none" : "block";
+  }
 }
 
 function filterProjects() {
-  const searchValue = searchInput.value.toLowerCase().trim();
-  const filteredProjects = projects.filter((project) => {
+  const searchValue = (searchInput?.value || "").toLowerCase().trim();
+  const filtered = projects.filter((project) => {
     const matchesSearch = project.title.toLowerCase().includes(searchValue);
     const matchesCategory =
       selectedCategory === "all" || project.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
-  displayProjects(filteredProjects);
+  displayProjects(filtered);
 }
 
+/* ============================================================
+   Main Load
+   ============================================================ */
+
 async function loadProjects() {
+  if (!projectsContainer) return;
+
   try {
     const response = await fetch("data/projects.json");
     if (!response.ok) throw new Error("Projects could not be loaded.");
     projects = await response.json();
-    displayProjects(projects);
+
+    if (isHomePage) {
+      /* ---- HOMEPAGE: show only the first N projects ---- */
+      const limited = projects.slice(0, HOME_PROJECTS_LIMIT);
+      displayProjects(limited);
+
+      /* Hide toolbar (search + filters) on homepage */
+      const toolbar = document.querySelector(".projects-toolbar");
+      if (toolbar) toolbar.style.display = "none";
+    } else {
+      /* ---- PROJECTS PAGE: show all with search/filter ---- */
+      displayProjects(projects);
+    }
   } catch (error) {
     console.error(error);
-    projectsContainer.innerHTML = `
-      <div class="col-12">
-        <p class="text-center text-danger">Projects could not be loaded.</p>
-      </div>
-    `;
+    if (projectsContainer) {
+      projectsContainer.innerHTML = `
+        <div class="col-12">
+          <p class="text-center text-danger">Projects could not be loaded.</p>
+        </div>
+      `;
+    }
   }
 }
 
-searchInput?.addEventListener("input", filterProjects);
-filterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    filterButtons.forEach((item) => item.classList.remove("active"));
-    button.classList.add("active");
-    selectedCategory = button.dataset.filter;
-    filterProjects();
-  });
-});
+/* ============================================================
+   Event Listeners (projects page only)
+   ============================================================ */
 
-if (projectsContainer && searchInput && noProjectsMessage) loadProjects();
-fetch("assets/data/projects.json")
-  .then((response) => response.json())
-  .then((projects) => {
-    const featuredProjects = projects
-      .filter((project) => project.featured === true)
-      .slice(0, 3);
-
-    displayProjects(featuredProjects);
-  })
-  .catch((error) => {
-    console.error("Error loading projects:", error);
+if (!isHomePage) {
+  searchInput?.addEventListener("input", filterProjects);
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      selectedCategory = button.dataset.filter;
+      filterProjects();
+    });
   });
+}
+
+/* ---- Boot ---- */
+loadProjects();
