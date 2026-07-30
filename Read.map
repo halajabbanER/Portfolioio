@@ -1,0 +1,481 @@
+# 💼 Personal Portfolio Website
+
+A modern, responsive, and user-friendly personal portfolio website created to showcase my projects, technical skills, experience, and contact information.
+
+The project was developed using **HTML5, CSS3, Bootstrap 5, Vanilla JavaScript, and JSON**. Project information is stored in a JSON file and displayed dynamically using the JavaScript Fetch API.
+
+---
+
+## 🌐 Live Demo
+
+🔗 [View Portfolio Website](YOUR-PORTFOLIO-LINK)
+
+---
+
+## 📸 Project Preview
+
+### Home Page
+
+![Home Page](assets/images/start-page.png)
+
+### About Page
+
+![About Page](assets/images/about-page.png)
+
+### Technologies Section
+
+![Technologies](assets/images/technologies.png)
+
+### Projects Page
+
+![Projects Header](assets/images/project-top.png)
+
+![Projects](assets/images/projects.png)
+
+### Contact Page
+
+![Contact Information](assets/images/contact-top.png)
+
+![Contact Form](assets/images/contact.png)
+
+---
+
+## 🚀 Features
+
+- Fully responsive design
+- Mobile-first development approach
+- Modern and clean user interface
+- Dynamic project rendering using JSON
+- Project search functionality
+- Project filtering by category
+- Dedicated project details page
+- Project selection using URL parameters
+- Dark and Light mode
+- Theme preference saved with `localStorage`
+- Contact form validation
+- Skills progress bars
+- Technologies and tools section
+- Social media links
+- Active navigation link highlighting
+- Scroll animations using AOS
+- Loading state while fetching project data
+- Semantic and accessible HTML structure
+- Reusable CSS variables
+- Responsive design for mobile, tablet, and desktop
+
+---
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Page structure and semantic elements |
+| CSS3 | Custom styling, animations, and responsive design |
+| Bootstrap 5 | Grid system and responsive components |
+| JavaScript | Interactivity and project logic |
+| JSON | Dynamic project data storage |
+| Fetch API | Loading project data |
+| LocalStorage | Saving Dark and Light mode preference |
+| AOS | Scroll animations |
+| Font Awesome | Icons |
+| Bootstrap Icons | Interface icons |
+| Git | Version control |
+| GitHub | Source code hosting |
+| GitHub Pages | Website deployment |
+
+---
+
+## 📄 Website Pages
+
+### 🏠 Home Page
+
+The Home page introduces me as a Computer Engineer and Frontend Developer.
+
+It includes:
+
+- Personal introduction
+- View Projects button
+- Download CV button
+- Featured projects
+- Technologies section
+- Social media links
+
+### 👩‍💻 About Page
+
+The About page presents information about my education, interests, experience, and frontend development journey.
+
+It includes:
+
+- Personal introduction
+- Professional goals
+- Experience statistics
+- Skills progress bars
+- Technologies
+- Languages
+- Development experience
+
+### 📂 Projects Page
+
+The Projects page displays projects dynamically from the `projects.json` file.
+
+Users can:
+
+- Search for projects by name
+- Filter projects by category
+- Open GitHub repositories
+- View live demonstrations
+- Open project details
+
+### 🔍 Project Details Page
+
+Each project has a dedicated details page.
+
+The selected project is identified using its ID from the URL:
+
+```text
+project-details.html?id=1
+```
+
+The page displays:
+
+- Project title
+- Project image
+- Description
+- Overview
+- Technologies
+- Features
+- GitHub link
+- Live Demo link
+
+### 📬 Contact Page
+
+The Contact page allows visitors to reach me.
+
+It contains:
+
+- Email address
+- Phone number
+- Location
+- GitHub link
+- LinkedIn link
+- Contact form
+
+---
+
+## 📁 Project Structure
+
+```text
+portfolio/
+│
+├── index.html
+├── about.html
+├── projects.html
+├── project-details.html
+├── contact.html
+│
+├── css/
+│   └── style.css
+│
+├── js/
+│   ├── main.js
+│   ├── projects.js
+│   ├── project-details.js
+│   └── theme.js
+│
+├── data/
+│   └── projects.json
+│
+└── assets/
+    ├── images/
+    │   ├── start-page.png
+    │   ├── about-page.png
+    │   ├── technologies.png
+    │   ├── project-top.png
+    │   ├── projects.png
+    │   ├── contact-top.png
+    │   └── contact.png
+    │
+    ├── icons/
+    │
+    └── files/
+        └── cv.pdf
+```
+### Project Filtering
+
+Projects can be filtered by category:
+
+- All
+- Web
+- Mobile
+- UI/UX
+- Database
+- Hardware
+
+```javascript
+const filteredProjects =
+  selectedCategory === "All"
+    ? allProjects
+    : allProjects.filter(
+        (project) => project.category === selectedCategory
+      );
+
+displayProjects(filteredProjects);
+```
+
+---
+
+### Project Search
+
+Users can search for projects by typing the project name.
+
+```javascript
+searchInput.addEventListener("input", function () {
+  const searchValue = searchInput.value.toLowerCase().trim();
+
+  const searchResults = allProjects.filter((project) =>
+    project.title.toLowerCase().includes(searchValue)
+  );
+
+  displayProjects(searchResults);
+});
+```
+
+---
+
+### Project Details
+
+The project ID is retrieved from the URL using `URLSearchParams`.
+
+```javascript
+const parameters = new URLSearchParams(window.location.search);
+
+const projectId = Number(parameters.get("id"));
+```
+
+The matching project is selected from the JSON data:
+
+```javascript
+const selectedProject = projects.find(
+  (project) => project.id === projectId
+);
+```
+
+---
+
+### Dark and Light Mode
+
+The selected theme is saved in `localStorage`.
+
+```javascript
+themeButton.addEventListener("click", function () {
+  document.body.classList.toggle("light-mode");
+
+  const selectedTheme = document.body.classList.contains("light-mode")
+    ? "light"
+    : "dark";
+
+  localStorage.setItem("theme", selectedTheme);
+});
+```
+
+The saved theme is restored when the page loads:
+
+```javascript
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+  document.body.classList.add("light-mode");
+}
+```
+
+---
+
+### Contact Form Validation
+
+The contact form checks:
+
+- Name is not empty
+- Email is valid
+- Subject is not empty
+- Message is not empty
+
+```javascript
+contactForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const subject = subjectInput.value.trim();
+  const message = messageInput.value.trim();
+
+  if (!name || !email || !subject || !message) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  alert("Your message has been sent successfully.");
+  contactForm.reset();
+});
+```
+
+---
+
+## 📱 Responsive Design
+
+The website was designed to work correctly on:
+
+- Mobile phones
+- Tablets
+- Laptops
+- Desktop screens
+
+Responsive layouts were created using:
+
+- Bootstrap Grid System
+- Flexbox
+- CSS Grid
+- Media queries
+- Responsive font sizes
+- Flexible images
+- Mobile navigation menu
+
+---
+
+## ♿ Accessibility
+
+Basic accessibility improvements include:
+
+- Semantic HTML elements
+- Descriptive image `alt` attributes
+- Form labels
+- Button labels
+- Accessible navigation links
+- Color contrast considerations
+- Keyboard-friendly links and buttons
+- `aria-label` attributes for icon buttons
+
+---
+
+## 📦 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/halajabbanER/portfolio.git
+```
+
+### 2. Open the project folder
+
+```bash
+cd portfolio
+```
+
+### 3. Open the project in Visual Studio Code
+
+```bash
+code .
+```
+
+### 4. Run the project
+
+Install the **Live Server** extension in Visual Studio Code.
+
+Then:
+
+1. Right-click on `index.html`.
+2. Select **Open with Live Server**.
+3. The project will open in your browser.
+
+> Live Server is recommended because the project uses `fetch()` to load the JSON file.
+
+---
+
+## 🚀 Deployment
+
+The website can be deployed using:
+
+- GitHub Pages
+- Netlify
+- Vercel
+- Firebase Hosting
+
+### Deploying with GitHub Pages
+
+1. Push the project to GitHub.
+2. Open the GitHub repository.
+3. Go to **Settings**.
+4. Select **Pages**.
+5. Under **Build and deployment**, select **Deploy from a branch**.
+6. Select the `main` branch.
+7. Select the `/root` folder.
+8. Click **Save**.
+9. Wait for GitHub to generate the website URL.
+
+---
+
+## 🧪 Testing
+
+The following tests were performed:
+
+- Navigation links
+- Project search
+- Project category filtering
+- Project details URL
+- Dark and Light mode
+- Theme storage
+- Contact form validation
+- Responsive layouts
+- Mobile navigation
+- Image paths
+- JSON loading
+- GitHub links
+- Live Demo links
+- Browser console errors
+
+---
+
+## 🔮 Future Improvements
+
+- Connect the contact form with EmailJS
+- Add multilingual support
+- Add Arabic, Turkish, and English languages
+- Add more project categories
+- Add loading animations
+- Add contact form success messages
+- Add downloadable certificates
+- Add a blog section
+- Add project pagination
+- Add project sorting
+- Add custom 404 page
+- Improve SEO
+- Optimize images
+- Improve website performance
+- Add backend support for contact messages
+
+---
+
+## 📄 License
+
+This project is open source and available for personal and educational use.
+
+---
+
+## 👩‍💻 Author
+
+### Hala Jabban
+
+Computer Engineer and Frontend Developer passionate about designing and developing modern, responsive, accessible, and user-friendly web applications.
+
+- 🌐 **Portfolio:** [View My Portfolio](YOUR-PORTFOLIO-LINK)
+- 💻 **GitHub:** [@halajabbanER](https://github.com/halajabbanER)
+- 🔗 **LinkedIn:** [Hala Jabban](YOUR-LINKEDIN-LINK)
+- 📧 **Email:** halajabban003@gmail.com
+- 📍 **Location:** Istanbul, Türkiye
+
