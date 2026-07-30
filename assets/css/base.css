@@ -570,12 +570,19 @@ body {
 
   font-size: 12px;
   font-weight: 600;
+  line-height: 1;
 
   text-decoration: none;
 
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
+}
+
+.project-btn i {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
 .github-btn {
@@ -2756,4 +2763,3 @@ background-color: var(--bg-alt);
     width: 100%;
   }
 }
-
