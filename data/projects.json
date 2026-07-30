@@ -64,6 +64,57 @@
       "RESTful endpoints"
     ],
     "githubLink": "#",
-    "demoLink": "#"
-  }
+    "demoLink": " live demo"
+  },
+  {
+    "id": 4,
+    "title": "16-Bit Processor Design and Sequencing Algorithm",
+    "category": "Hardware",
+    "description": "A 16-bit processor designed using Logisim to demonstrate the fundamentals of computer architecture, instruction execution, and digital logic design.",
+    "overview": "This project focuses on designing and simulating a 16-bit processor in Logisim. It includes the implementation of core processor components, instruction execution, and sequencing logic to demonstrate how a CPU operates at the hardware level.",
+    "image": "assets/images/16bit.png",
+    "tags": ["Logisim", "Digital Logic", "Computer Architecture"],
+    "technologies": [
+      "Logisim",
+      "Digital Logic Design",
+      "Computer Architecture",
+      "16-Bit Processor",
+      "Sequencing Algorithm"
+    ],
+    "features": [
+      "Designed a complete 16-bit processor architecture",
+      "Implemented ALU and register operations",
+      "Executed instruction sequencing",
+      "Simulated processor behavior using Logisim",
+      "Tested digital circuits and instruction flow"
+    ],
+    "githubLink": "https://github.com/halajabbanER/16-Bit-lemci-Tasar-m-ve-Dizi-leme-Algoritmas-.git",
+    "demoLink": " live demo"
+  },
+   {
+     "title": "Library Management System",
+     "category": "Desktop Application",
+     "image": "assets/images/library.png",
+     "description": "A Library Management System developed using Java Swing and MySQL to manage books, members, and borrowing operations through a simple desktop interface.",
+     "overview": "This project was built with Java Swing for the graphical user interface and MySQL as the database. It allows users to add, update, delete, and search for books while efficiently managing library records.",
+     "tags": ["Java Swing", "MySQL"],
+     "technologies": [
+       "Java",
+       "Java Swing",
+       "MySQL",
+       "JDBC",
+       "Object-Oriented Programming (OOP)"
+     ],
+     "features": [
+       "Add new books",
+       "Update book information",
+       "Delete books",
+       "Search for books",
+       "Manage library records",
+       "Connect to MySQL database using JDBC"
+     ],
+     "githubLink": "https://github.com/halajabbanER/Library-Manager.git",
+     "demoLink": " live demo"
+   }
+   
 ]
